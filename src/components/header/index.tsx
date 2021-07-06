@@ -5,10 +5,18 @@ const Header = () => {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    if (token !== undefined && token !== '') {
+    if (token !== undefined && token !== null) {
       setIsLoggedIn(true);
     }
+
+    console.log(isLoggedIn);
+    
   }, [isLoggedIn]);
+
+  const logOut = () => {
+    localStorage.clear();
+    window.location.reload();
+  }
 
   return (
     <div className="bg-gray-500 text-white">
@@ -22,7 +30,7 @@ const Header = () => {
         <li>
           <a href="/profile">Profile</a>
         </li>
-        <li>{!isLoggedIn ? <p>Log out</p> : <a href="/login">Login</a>}</li>
+        <li>{isLoggedIn ? <button onClick={logOut}>Logout</button> : <a href="/login">Login</a>}</li>
       </ul>
     </div>
   );

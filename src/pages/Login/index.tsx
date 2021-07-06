@@ -20,9 +20,6 @@ const Login = () => {
   
 
   useEffect(() => {
-    console.log(token);
-    console.log(isLoggedIn);
-    
     if (token !== undefined && token !== null) {
       setIsLoggedIn(true);
     }
